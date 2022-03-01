@@ -163,14 +163,14 @@ resource "aws_config_config_rule" "CLOUDTRAIL_SECURITY_TRAIL_ENABLED" {
 
 variable "CWAlarmParams" {
   type = object({
-    alarmActionRequired     = string
-    insufficientDataActionRequired  = string
-    okActionRequired = string
+    alarmActionRequired            = string
+    insufficientDataActionRequired = string
+    okActionRequired               = string
   })
   default = {
-   "alarmActionRequired"     = "TRUE"
-   "insufficientDataActionRequired"  = "TRUE"
-   "okActionRequired" = "FALSE"
+    "alarmActionRequired"            = "TRUE"
+    "insufficientDataActionRequired" = "TRUE"
+    "okActionRequired"               = "FALSE"
   }
 }
 
@@ -433,8 +433,8 @@ resource "aws_config_config_rule" "EC2_VOLUME_INUSE_CHECK" {
   input_parameters = jsonencode({
     deleteOnTermination = {
       value = var.Ec2VolumeInuseCheckParamDeleteOnTermination
-  }
-})
+    }
+  })
 }
 
 
@@ -540,7 +540,7 @@ resource "aws_config_config_rule" "ELB_LOGGING_ENABLED" {
     source_identifier = "ELB_LOGGING_ENABLED"
   }
   scope {
-    compliance_resource_types = ["AWS::ElasticLoadBalancing::LoadBalancer","AWS::ElasticLoadBalancingV2::LoadBalancer"]
+    compliance_resource_types = ["AWS::ElasticLoadBalancing::LoadBalancer", "AWS::ElasticLoadBalancingV2::LoadBalancer"]
   }
 }
 
@@ -597,14 +597,14 @@ resource "aws_config_config_rule" "GUARDDUTY_ENABLED_CENTRALIZED" {
 
 variable "GUARDDUTY_NA_FINDINGS_PARAMS" {
   type = object({
-    daysHighSev     = string
+    daysHighSev   = string
     daysMediumSev = string
-    daysLowSev  = string
+    daysLowSev    = string
   })
   default = {
-   "daysHighSev"     =  var.GuarddutyNonArchivedFindingsParamDaysHighSev
-   "daysMediumSev"  = var.GuarddutyNonArchivedFindingsParamDaysMediumSev
-   "daysLowSev" = var.GuarddutyNonArchivedFindingsParamDaysLowSev
+    "daysHighSev"   = var.GuarddutyNonArchivedFindingsParamDaysHighSev
+    "daysMediumSev" = var.GuarddutyNonArchivedFindingsParamDaysMediumSev
+    "daysLowSev"    = var.GuarddutyNonArchivedFindingsParamDaysLowSev
   }
 }
 
@@ -639,7 +639,7 @@ resource "aws_config_config_rule" "IAM_NO_INLINE_POLICY_CHECK" {
     source_identifier = "IAM_NO_INLINE_POLICY_CHECK"
   }
   scope {
-    compliance_resource_types = ["AWS::IAM::User","AWS::IAM::Role","AWS::IAM::Group"]
+    compliance_resource_types = ["AWS::IAM::User", "AWS::IAM::Role", "AWS::IAM::Group"]
   }
 }
 
@@ -647,22 +647,22 @@ resource "aws_config_config_rule" "IAM_NO_INLINE_POLICY_CHECK" {
 
 variable "IamPasswordPolicyParams" {
   type = object({
-    MaxPasswordAge     = string
-    MinimumPasswordLength  = string
-    PasswordReusePrevention = string
-    RequireLowercaseCharacters     = string
-    RequireNumbers  = string
-    RequireSymbols = string
+    MaxPasswordAge             = string
+    MinimumPasswordLength      = string
+    PasswordReusePrevention    = string
+    RequireLowercaseCharacters = string
+    RequireNumbers             = string
+    RequireSymbols             = string
     RequireUppercaseCharacters = string
 
   })
   default = {
-    "MaxPasswordAge"     = var.IamPasswordPolicyParamMaxPasswordAge
-    "MinimumPasswordLength"  = var.IamPasswordPolicyParamMinimumPasswordLength
-    "PasswordReusePrevention" = var.IamPasswordPolicyParamPasswordReusePrevention
-    "RequireLowercaseCharacters"     = var.IamPasswordPolicyParamRequireLowercaseCharacters
-    "RequireNumbers"  = var.IamPasswordPolicyParamRequireNumbers
-    "RequireSymbols" = var.IamPasswordPolicyParamRequireSymbols
+    "MaxPasswordAge"             = var.IamPasswordPolicyParamMaxPasswordAge
+    "MinimumPasswordLength"      = var.IamPasswordPolicyParamMinimumPasswordLength
+    "PasswordReusePrevention"    = var.IamPasswordPolicyParamPasswordReusePrevention
+    "RequireLowercaseCharacters" = var.IamPasswordPolicyParamRequireLowercaseCharacters
+    "RequireNumbers"             = var.IamPasswordPolicyParamRequireNumbers
+    "RequireSymbols"             = var.IamPasswordPolicyParamRequireSymbols
     "RequireUppercaseCharacters" = var.IamPasswordPolicyParamRequireUppercaseCharacters
   }
 }
@@ -914,7 +914,7 @@ resource "aws_config_config_rule" "RDS_SNAPSHOT_ENCRYPTED" {
     source_identifier = "RDS_SNAPSHOT_ENCRYPTED"
   }
   scope {
-    compliance_resource_types = ["AWS::RDS::DBSnapshot","AWS::RDS::DBClusterSnapshot"]
+    compliance_resource_types = ["AWS::RDS::DBSnapshot", "AWS::RDS::DBClusterSnapshot"]
   }
 }
 
@@ -927,7 +927,7 @@ resource "aws_config_config_rule" "RDS_SNAPSHOTS_PUBLIC_PROHIBITED" {
     source_identifier = "RDS_SNAPSHOTS_PUBLIC_PROHIBITED"
   }
   scope {
-    compliance_resource_types = ["AWS::RDS::DBSnapshot","AWS::RDS::DBClusterSnapshot"]
+    compliance_resource_types = ["AWS::RDS::DBSnapshot", "AWS::RDS::DBClusterSnapshot"]
   }
 }
 
@@ -946,12 +946,12 @@ resource "aws_config_config_rule" "RDS_STORAGE_ENCRYPTED" {
 
 variable "RedshiftClusterConfigurationCheckParams" {
   type = object({
-    clusterDbEncrypted     = string
-    loggingEnabled  = string
+    clusterDbEncrypted = string
+    loggingEnabled     = string
   })
   default = {
-   "clusterDbEncrypted"     = "TRUE"
-   "loggingEnabled"  = "TRUE"
+    "clusterDbEncrypted" = "TRUE"
+    "loggingEnabled"     = "TRUE"
   }
 }
 
@@ -995,19 +995,19 @@ resource "aws_config_config_rule" "REDSHIFT_REQUIRE_TLS_SSL" {
 
 variable "RestrictedIncomingTrafficParams" {
   type = object({
-    blockedPort1     = string
-    blockedPort2     = string
-    blockedPort3     = string
-    blockedPort4     = string
-    blockedPort5     = string
+    blockedPort1 = string
+    blockedPort2 = string
+    blockedPort3 = string
+    blockedPort4 = string
+    blockedPort5 = string
 
   })
   default = {
-   "blockedPort1"     = var.RestrictedIncomingTrafficParamBlockedPort1
-   "blockedPort2"     = var.RestrictedIncomingTrafficParamBlockedPort2
-   "blockedPort3"     = var.RestrictedIncomingTrafficParamBlockedPort3
-   "blockedPort4"     = var.RestrictedIncomingTrafficParamBlockedPort4
-   "blockedPort5"     = var.RestrictedIncomingTrafficParamBlockedPort5
+    "blockedPort1" = var.RestrictedIncomingTrafficParamBlockedPort1
+    "blockedPort2" = var.RestrictedIncomingTrafficParamBlockedPort2
+    "blockedPort3" = var.RestrictedIncomingTrafficParamBlockedPort3
+    "blockedPort4" = var.RestrictedIncomingTrafficParamBlockedPort4
+    "blockedPort5" = var.RestrictedIncomingTrafficParamBlockedPort5
   }
 }
 
@@ -1025,56 +1025,56 @@ resource "aws_config_config_rule" "RESTRICTED_INCOMING_TRAFFIC" {
 }
 
 
-  ## NOT IN GOVLCOUD
-  # RootAccountHardwareMfaEnabled:
-  #   Properties:
-  #     ConfigRuleName: root-account-hardware-mfa-enabled
-  #     Source:
-  #       Owner: AWS
-  #       SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
-  #   Type: AWS::Config::ConfigRule
+## NOT IN GOVLCOUD
+# RootAccountHardwareMfaEnabled:
+#   Properties:
+#     ConfigRuleName: root-account-hardware-mfa-enabled
+#     Source:
+#       Owner: AWS
+#       SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
+#   Type: AWS::Config::ConfigRule
 
-  ## NOT IN GOVLCOUD
-  # RootAccountMfaEnabled:
-  #   Properties:
-  #     ConfigRuleName: root-account-mfa-enabled
-  #     Source:
-  #       Owner: AWS
-  #       SourceIdentifier: ROOT_ACCOUNT_MFA_ENABLED
-  #   Type: AWS::Config::ConfigRule
+## NOT IN GOVLCOUD
+# RootAccountMfaEnabled:
+#   Properties:
+#     ConfigRuleName: root-account-mfa-enabled
+#     Source:
+#       Owner: AWS
+#       SourceIdentifier: ROOT_ACCOUNT_MFA_ENABLED
+#   Type: AWS::Config::ConfigRule
 
-  ## NOT IN GOVLCOUD
-  # S3AccountLevelPublicAccessBlocks:
-  #   Properties:
-  #     ConfigRuleName: s3-account-level-public-access-blocks
-  #     InputParameters:
-  #       BlockPublicAcls:
-  #         Fn::If:
-  #         - s3AccountLevelPublicAccessBlocksParamBlockPublicAcls
-  #         - Ref: S3AccountLevelPublicAccessBlocksParamBlockPublicAcls
-  #         - Ref: AWS::NoValue
-  #       BlockPublicPolicy:
-  #         Fn::If:
-  #         - s3AccountLevelPublicAccessBlocksParamBlockPublicPolicy
-  #         - Ref: S3AccountLevelPublicAccessBlocksParamBlockPublicPolicy
-  #         - Ref: AWS::NoValue
-  #       IgnorePublicAcls:
-  #         Fn::If:
-  #         - s3AccountLevelPublicAccessBlocksParamIgnorePublicAcls
-  #         - Ref: S3AccountLevelPublicAccessBlocksParamIgnorePublicAcls
-  #         - Ref: AWS::NoValue
-  #       RestrictPublicBuckets:
-  #         Fn::If:
-  #         - s3AccountLevelPublicAccessBlocksParamRestrictPublicBuckets
-  #         - Ref: S3AccountLevelPublicAccessBlocksParamRestrictPublicBuckets
-  #         - Ref: AWS::NoValue
-  #     Scope:
-  #       ComplianceResourceTypes:
-  #       - AWS::S3::AccountPublicAccessBlock
-  #     Source:
-  #       Owner: AWS
-  #       SourceIdentifier: S3_ACCOUNT_LEVEL_PUBLIC_ACCESS_BLOCKS
-  #   Type: AWS::Config::ConfigRule
+## NOT IN GOVLCOUD
+# S3AccountLevelPublicAccessBlocks:
+#   Properties:
+#     ConfigRuleName: s3-account-level-public-access-blocks
+#     InputParameters:
+#       BlockPublicAcls:
+#         Fn::If:
+#         - s3AccountLevelPublicAccessBlocksParamBlockPublicAcls
+#         - Ref: S3AccountLevelPublicAccessBlocksParamBlockPublicAcls
+#         - Ref: AWS::NoValue
+#       BlockPublicPolicy:
+#         Fn::If:
+#         - s3AccountLevelPublicAccessBlocksParamBlockPublicPolicy
+#         - Ref: S3AccountLevelPublicAccessBlocksParamBlockPublicPolicy
+#         - Ref: AWS::NoValue
+#       IgnorePublicAcls:
+#         Fn::If:
+#         - s3AccountLevelPublicAccessBlocksParamIgnorePublicAcls
+#         - Ref: S3AccountLevelPublicAccessBlocksParamIgnorePublicAcls
+#         - Ref: AWS::NoValue
+#       RestrictPublicBuckets:
+#         Fn::If:
+#         - s3AccountLevelPublicAccessBlocksParamRestrictPublicBuckets
+#         - Ref: S3AccountLevelPublicAccessBlocksParamRestrictPublicBuckets
+#         - Ref: AWS::NoValue
+#     Scope:
+#       ComplianceResourceTypes:
+#       - AWS::S3::AccountPublicAccessBlock
+#     Source:
+#       Owner: AWS
+#       SourceIdentifier: S3_ACCOUNT_LEVEL_PUBLIC_ACCESS_BLOCKS
+#   Type: AWS::Config::ConfigRule
 
 resource "aws_config_config_rule" "S3_BUCKET_DEFAULT_LOCK_ENABLED" {
   name        = "s3-bucket-default-lock-enabled"
@@ -1266,13 +1266,13 @@ resource "aws_config_config_rule" "VPC_FLOW_LOGS_ENABLED" {
 
 variable "VpcSgOpenOnlyToAuthorizedPortsParams" {
   type = object({
-    authorizedTcpPorts     = string
-    authorizedUdpPorts  = string
+    authorizedTcpPorts = string
+    authorizedUdpPorts = string
 
   })
   default = {
-   "authorizedTcpPorts"     = var.VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts
-   "authorizedUdpPorts"  = var.VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedUdpPorts
+    "authorizedTcpPorts" = var.VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts
+    "authorizedUdpPorts" = var.VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedUdpPorts
   }
 }
 
@@ -1303,11 +1303,11 @@ resource "aws_config_config_rule" "VPC_VPN_2_TUNNELS_UP" {
 }
 
 
-  ## NOT IN GOVLCOUD
-  # Wafv2LoggingEnabled:
-  #   Properties:
-  #     ConfigRuleName: wafv2-logging-enabled
-  #     Source:
-  #       Owner: AWS
-  #       SourceIdentifier: WAFV2_LOGGING_ENABLED
-  #   Type: AWS::Config::ConfigRule
+## NOT IN GOVLCOUD
+# Wafv2LoggingEnabled:
+#   Properties:
+#     ConfigRuleName: wafv2-logging-enabled
+#     Source:
+#       Owner: AWS
+#       SourceIdentifier: WAFV2_LOGGING_ENABLED
+#   Type: AWS::Config::ConfigRule
