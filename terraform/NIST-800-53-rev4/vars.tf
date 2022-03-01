@@ -13,54 +13,39 @@ variable "Ec2VolumeInuseCheckParamDeleteOnTermination" {
   default = "TRUE"
 }
 
-variable "GuarddutyNonArchivedFindingsParamDaysHighSev" {
-  type    = string
-  default = "1"
+variable "GUARDDUTY_NA_FINDINGS_PARAMS" {
+  type = object({
+    daysHighSev   = string
+    daysMediumSev = string
+    daysLowSev    = string
+  })
+  default = {
+    "daysHighSev"   = "1"
+    "daysMediumSev" = "7"
+    "daysLowSev"    = "30"
+  }
 }
 
-variable "GuarddutyNonArchivedFindingsParamDaysLowSev" {
-  type    = string
-  default = "30"
-}
+variable "IamPasswordPolicyParams" {
+  type = object({
+    MaxPasswordAge             = string
+    MinimumPasswordLength      = string
+    PasswordReusePrevention    = string
+    RequireLowercaseCharacters = string
+    RequireNumbers             = string
+    RequireSymbols             = string
+    RequireUppercaseCharacters = string
 
-variable "GuarddutyNonArchivedFindingsParamDaysMediumSev" {
-  type    = string
-  default = "7"
-}
-
-variable "IamPasswordPolicyParamMaxPasswordAge" {
-  type    = string
-  default = "90"
-}
-
-variable "IamPasswordPolicyParamMinimumPasswordLength" {
-  type    = string
-  default = "14"
-}
-
-variable "IamPasswordPolicyParamPasswordReusePrevention" {
-  type    = string
-  default = "24"
-}
-
-variable "IamPasswordPolicyParamRequireLowercaseCharacters" {
-  type    = string
-  default = "true"
-}
-
-variable "IamPasswordPolicyParamRequireNumbers" {
-  type    = string
-  default = "true"
-}
-
-variable "IamPasswordPolicyParamRequireSymbols" {
-  type    = string
-  default = "true"
-}
-
-variable "IamPasswordPolicyParamRequireUppercaseCharacters" {
-  type    = string
-  default = "true"
+  })
+  default = {
+    "MaxPasswordAge"             = "90"
+    "MinimumPasswordLength"      = "14"
+    "PasswordReusePrevention"    = "24"
+    "RequireLowercaseCharacters" = "true"
+    "RequireNumbers"             = "true"
+    "RequireSymbols"             = "true"
+    "RequireUppercaseCharacters" = "true"
+  }
 }
 
 variable "IamUserUnusedCredentialsCheckParamMaxCredentialUsageAge" {
@@ -68,29 +53,22 @@ variable "IamUserUnusedCredentialsCheckParamMaxCredentialUsageAge" {
   default = "90"
 }
 
-variable "RestrictedIncomingTrafficParamBlockedPort1" {
-  type    = string
-  default = "20"
-}
+variable "RestrictedIncomingTrafficParams" {
+  type = object({
+    blockedPort1 = string
+    blockedPort2 = string
+    blockedPort3 = string
+    blockedPort4 = string
+    blockedPort5 = string
 
-variable "RestrictedIncomingTrafficParamBlockedPort2" {
-  type    = string
-  default = "21"
-}
-
-variable "RestrictedIncomingTrafficParamBlockedPort3" {
-  type    = string
-  default = "3389"
-}
-
-variable "RestrictedIncomingTrafficParamBlockedPort4" {
-  type    = string
-  default = "3306"
-}
-
-variable "RestrictedIncomingTrafficParamBlockedPort5" {
-  type    = string
-  default = "4333"
+  })
+  default = {
+    "blockedPort1" = "20"
+    "blockedPort2" = "21"
+    "blockedPort3" = "3389"
+    "blockedPort4" = "3306"
+    "blockedPort5" = "4333"
+  }
 }
 
 variable "S3AccountLevelPublicAccessBlocksParamBlockPublicAcls" {
@@ -113,12 +91,27 @@ variable "S3AccountLevelPublicAccessBlocksParamRestrictPublicBuckets" {
   default = "True"
 }
 
-variable "VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts" {
-  type    = string
-  default = "443"
+variable "VpcSgOpenOnlyToAuthorizedPortsParams" {
+  type = object({
+    authorizedTcpPorts = string
+    authorizedUdpPorts = string
+
+  })
+  default = {
+    "authorizedTcpPorts" = "443"
+    "authorizedUdpPorts" = "1020-1025"
+  }
 }
 
-variable "VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedUdpPorts" {
-  type    = string
-  default = "1020-1025"
+variable "CWAlarmParams" {
+  type = object({
+    alarmActionRequired            = string
+    insufficientDataActionRequired = string
+    okActionRequired               = string
+  })
+  default = {
+    "alarmActionRequired"            = "TRUE"
+    "insufficientDataActionRequired" = "TRUE"
+    "okActionRequired"               = "FALSE"
+  }
 }

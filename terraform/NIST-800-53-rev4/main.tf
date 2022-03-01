@@ -161,19 +161,6 @@ resource "aws_config_config_rule" "CLOUDTRAIL_SECURITY_TRAIL_ENABLED" {
   }
 }
 
-variable "CWAlarmParams" {
-  type = object({
-    alarmActionRequired            = string
-    insufficientDataActionRequired = string
-    okActionRequired               = string
-  })
-  default = {
-    "alarmActionRequired"            = "TRUE"
-    "insufficientDataActionRequired" = "TRUE"
-    "okActionRequired"               = "FALSE"
-  }
-}
-
 resource "aws_config_config_rule" "CLOUDWATCH_ALARM_ACTION_CHECK" {
   name        = "cloudwatch-alarm-action-check"
   description = ""
@@ -595,19 +582,6 @@ resource "aws_config_config_rule" "GUARDDUTY_ENABLED_CENTRALIZED" {
   }
 }
 
-variable "GUARDDUTY_NA_FINDINGS_PARAMS" {
-  type = object({
-    daysHighSev   = string
-    daysMediumSev = string
-    daysLowSev    = string
-  })
-  default = {
-    "daysHighSev"   = var.GuarddutyNonArchivedFindingsParamDaysHighSev
-    "daysMediumSev" = var.GuarddutyNonArchivedFindingsParamDaysMediumSev
-    "daysLowSev"    = var.GuarddutyNonArchivedFindingsParamDaysLowSev
-  }
-}
-
 resource "aws_config_config_rule" "GUARDDUTY_NON_ARCHIVED_FINDINGS" {
   name        = "guardduty-non-archived-findings"
   description = ""
@@ -617,7 +591,6 @@ resource "aws_config_config_rule" "GUARDDUTY_NON_ARCHIVED_FINDINGS" {
   }
   input_parameters = jsonencode(var.GUARDDUTY_NA_FINDINGS_PARAMS)
 }
-
 
 resource "aws_config_config_rule" "IAM_GROUP_HAS_USERS_CHECK" {
   name        = "iam-group-has-users-check"
@@ -643,30 +616,6 @@ resource "aws_config_config_rule" "IAM_NO_INLINE_POLICY_CHECK" {
   }
 }
 
-
-
-variable "IamPasswordPolicyParams" {
-  type = object({
-    MaxPasswordAge             = string
-    MinimumPasswordLength      = string
-    PasswordReusePrevention    = string
-    RequireLowercaseCharacters = string
-    RequireNumbers             = string
-    RequireSymbols             = string
-    RequireUppercaseCharacters = string
-
-  })
-  default = {
-    "MaxPasswordAge"             = var.IamPasswordPolicyParamMaxPasswordAge
-    "MinimumPasswordLength"      = var.IamPasswordPolicyParamMinimumPasswordLength
-    "PasswordReusePrevention"    = var.IamPasswordPolicyParamPasswordReusePrevention
-    "RequireLowercaseCharacters" = var.IamPasswordPolicyParamRequireLowercaseCharacters
-    "RequireNumbers"             = var.IamPasswordPolicyParamRequireNumbers
-    "RequireSymbols"             = var.IamPasswordPolicyParamRequireSymbols
-    "RequireUppercaseCharacters" = var.IamPasswordPolicyParamRequireUppercaseCharacters
-  }
-}
-
 resource "aws_config_config_rule" "IAM_PASSWORD_POLICY" {
   name        = "iam-password-policy"
   description = ""
@@ -676,7 +625,6 @@ resource "aws_config_config_rule" "IAM_PASSWORD_POLICY" {
   }
   input_parameters = jsonencode(var.IamPasswordPolicyParams)
 }
-
 
 resource "aws_config_config_rule" "IAM_POLICY_NO_STATEMENTS_WITH_ADMIN_ACCESS" {
   name        = "iam-policy-no-statements-with-admin-access"
@@ -993,24 +941,6 @@ resource "aws_config_config_rule" "REDSHIFT_REQUIRE_TLS_SSL" {
   }
 }
 
-variable "RestrictedIncomingTrafficParams" {
-  type = object({
-    blockedPort1 = string
-    blockedPort2 = string
-    blockedPort3 = string
-    blockedPort4 = string
-    blockedPort5 = string
-
-  })
-  default = {
-    "blockedPort1" = var.RestrictedIncomingTrafficParamBlockedPort1
-    "blockedPort2" = var.RestrictedIncomingTrafficParamBlockedPort2
-    "blockedPort3" = var.RestrictedIncomingTrafficParamBlockedPort3
-    "blockedPort4" = var.RestrictedIncomingTrafficParamBlockedPort4
-    "blockedPort5" = var.RestrictedIncomingTrafficParamBlockedPort5
-  }
-}
-
 resource "aws_config_config_rule" "RESTRICTED_INCOMING_TRAFFIC" {
   name        = "restricted-common-ports"
   description = ""
@@ -1264,18 +1194,6 @@ resource "aws_config_config_rule" "VPC_FLOW_LOGS_ENABLED" {
   }
 }
 
-variable "VpcSgOpenOnlyToAuthorizedPortsParams" {
-  type = object({
-    authorizedTcpPorts = string
-    authorizedUdpPorts = string
-
-  })
-  default = {
-    "authorizedTcpPorts" = var.VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedTcpPorts
-    "authorizedUdpPorts" = var.VpcSgOpenOnlyToAuthorizedPortsParamAuthorizedUdpPorts
-  }
-}
-
 resource "aws_config_config_rule" "VPC_SG_OPEN_ONLY_TO_AUTHORIZED_PORTS" {
   name        = "vpc-sg-open-only-to-authorized-ports"
   description = ""
@@ -1289,7 +1207,6 @@ resource "aws_config_config_rule" "VPC_SG_OPEN_ONLY_TO_AUTHORIZED_PORTS" {
   input_parameters = jsonencode(var.VpcSgOpenOnlyToAuthorizedPortsParams)
 }
 
-
 resource "aws_config_config_rule" "VPC_VPN_2_TUNNELS_UP" {
   name        = "vpc-vpn-2-tunnels-up"
   description = ""
@@ -1301,7 +1218,6 @@ resource "aws_config_config_rule" "VPC_VPN_2_TUNNELS_UP" {
     compliance_resource_types = ["AWS::EC2::VPNConnection"]
   }
 }
-
 
 ## NOT IN GOVLCOUD
 # Wafv2LoggingEnabled:
