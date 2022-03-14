@@ -7,6 +7,7 @@
 #   with 800-53 rev 4 requirements.
 #
 #   See Parameters section for names and descriptions of required parameters.
+#   Do not change the AWS Config rule description leveraging integrator.yml
 #
 ##################################################################################
 
@@ -221,6 +222,7 @@ Resources:
   AccessKeysRotated:
     Properties:
       ConfigRuleName: access-keys-rotated
+      Description: "NIST800-53R4 rule set"
       InputParameters:
         maxAccessKeyAge:
           Fn::If:
@@ -234,6 +236,7 @@ Resources:
   AcmCertificateExpirationCheck:
     Properties:
       ConfigRuleName: acm-certificate-expiration-check
+      Description: "NIST800-53R4 rule set"
       InputParameters:
         daysToExpiration:
           Fn::If:
@@ -250,6 +253,7 @@ Resources:
   AlbHttpDropInvalidHeaderEnabled:
     Properties:
       ConfigRuleName: alb-http-drop-invalid-header-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::ElasticLoadBalancingV2::LoadBalancer
@@ -260,6 +264,7 @@ Resources:
   AlbHttpToHttpsRedirectionCheck:
     Properties:
       ConfigRuleName: alb-http-to-https-redirection-check
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: ALB_HTTP_TO_HTTPS_REDIRECTION_CHECK
@@ -269,6 +274,7 @@ Resources:
   # AlbWafEnabled:
   #   Properties:
   #     ConfigRuleName: alb-waf-enabled
+  #     Description: "NIST800-53R4 rule set"
   #     Scope:
   #       ComplianceResourceTypes:
   #       - AWS::ElasticLoadBalancingV2::LoadBalancer
@@ -280,6 +286,7 @@ Resources:
   ApiGwCacheEnabledAndEncrypted:
     Properties:
       ConfigRuleName: api-gw-cache-enabled-and-encrypted
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::ApiGateway::Stage
@@ -290,6 +297,7 @@ Resources:
   ApiGwExecutionLoggingEnabled:
     Properties:
       ConfigRuleName: api-gw-execution-logging-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::ApiGateway::Stage
@@ -301,6 +309,7 @@ Resources:
   AutoscalingGroupElbHealthcheckRequired:
     Properties:
       ConfigRuleName: autoscaling-group-elb-healthcheck-required
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::AutoScaling::AutoScalingGroup
@@ -311,6 +320,7 @@ Resources:
   CloudTrailCloudWatchLogsEnabled:
     Properties:
       ConfigRuleName: cloud-trail-cloud-watch-logs-enabled
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: CLOUD_TRAIL_CLOUD_WATCH_LOGS_ENABLED
@@ -318,6 +328,7 @@ Resources:
   CloudTrailEnabled:
     Properties:
       ConfigRuleName: cloudtrail-enabled
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: CLOUD_TRAIL_ENABLED
@@ -325,6 +336,7 @@ Resources:
   CloudTrailEncryptionEnabled:
     Properties:
       ConfigRuleName: cloud-trail-encryption-enabled
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: CLOUD_TRAIL_ENCRYPTION_ENABLED
@@ -332,6 +344,7 @@ Resources:
   CloudTrailLogFileValidationEnabled:
     Properties:
       ConfigRuleName: cloud-trail-log-file-validation-enabled
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: CLOUD_TRAIL_LOG_FILE_VALIDATION_ENABLED
@@ -339,6 +352,7 @@ Resources:
   CloudtrailS3DataeventsEnabled:
     Properties:
       ConfigRuleName: cloudtrail-s3-dataevents-enabled
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: CLOUDTRAIL_S3_DATAEVENTS_ENABLED
@@ -346,6 +360,7 @@ Resources:
   CloudtrailSecurityTrailEnabled:
     Properties:
       ConfigRuleName: cloudtrail-security-trail-enabled
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: CLOUDTRAIL_SECURITY_TRAIL_ENABLED
@@ -353,6 +368,7 @@ Resources:
   CloudwatchAlarmActionCheck:
     Properties:
       ConfigRuleName: cloudwatch-alarm-action-check
+      Description: "NIST800-53R4 rule set"
       InputParameters:
         alarmActionRequired: 'TRUE'
         insufficientDataActionRequired: 'TRUE'
@@ -367,6 +383,7 @@ Resources:
   CloudwatchLogGroupEncrypted:
     Properties:
       ConfigRuleName: cloudwatch-log-group-encrypted
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: CLOUDWATCH_LOG_GROUP_ENCRYPTED
@@ -374,6 +391,7 @@ Resources:
   CmkBackingKeyRotationEnabled:
     Properties:
       ConfigRuleName: cmk-backing-key-rotation-enabled
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: CMK_BACKING_KEY_ROTATION_ENABLED
@@ -381,6 +399,7 @@ Resources:
   CodebuildProjectEnvvarAwscredCheck:
     Properties:
       ConfigRuleName: codebuild-project-envvar-awscred-check
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::CodeBuild::Project
@@ -391,6 +410,7 @@ Resources:
   CodebuildProjectSourceRepoUrlCheck:
     Properties:
       ConfigRuleName: codebuild-project-source-repo-url-check
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::CodeBuild::Project
@@ -401,6 +421,7 @@ Resources:
   CwLoggroupRetentionPeriodCheck:
     Properties:
       ConfigRuleName: cw-loggroup-retention-period-check
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: CW_LOGGROUP_RETENTION_PERIOD_CHECK
@@ -408,6 +429,7 @@ Resources:
   DbInstanceBackupEnabled:
     Properties:
       ConfigRuleName: db-instance-backup-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::RDS::DBInstance
@@ -418,6 +440,7 @@ Resources:
   DmsReplicationNotPublic:
     Properties:
       ConfigRuleName: dms-replication-not-public
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes: []
       Source:
@@ -429,6 +452,7 @@ Resources:
   # DynamodbAutoscalingEnabled:
   #   Properties:
   #     ConfigRuleName: dynamodb-autoscaling-enabled
+  #     Description: "NIST800-53R4 rule set"
   #     Scope:
   #       ComplianceResourceTypes:
   #       - AWS::DynamoDB::Table
@@ -441,6 +465,7 @@ Resources:
   # DynamodbInBackupPlan:
   #   Properties:
   #     ConfigRuleName: dynamodb-in-backup-plan
+  #     Description: "NIST800-53R4 rule set"
   #     Source:
   #       Owner: AWS
   #       SourceIdentifier: DYNAMODB_IN_BACKUP_PLAN
@@ -449,6 +474,7 @@ Resources:
   DynamodbPitrEnabled:
     Properties:
       ConfigRuleName: dynamodb-pitr-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::DynamoDB::Table
@@ -459,6 +485,7 @@ Resources:
   DynamodbTableEncryptedKms:
     Properties:
       ConfigRuleName: dynamodb-table-encrypted-kms
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::DynamoDB::Table
@@ -471,6 +498,7 @@ Resources:
   # EbsInBackupPlan:
   #   Properties:
   #     ConfigRuleName: ebs-in-backup-plan
+  #     Description: "NIST800-53R4 rule set"
   #     Source:
   #       Owner: AWS
   #       SourceIdentifier: EBS_IN_BACKUP_PLAN
@@ -479,6 +507,7 @@ Resources:
   EbsSnapshotPublicRestorableCheck:
     Properties:
       ConfigRuleName: ebs-snapshot-public-restorable-check
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: EBS_SNAPSHOT_PUBLIC_RESTORABLE_CHECK
@@ -486,6 +515,7 @@ Resources:
   Ec2EbsEncryptionByDefault:
     Properties:
       ConfigRuleName: ec2-ebs-encryption-by-default
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: EC2_EBS_ENCRYPTION_BY_DEFAULT
@@ -493,6 +523,7 @@ Resources:
   Ec2Imdsv2Check:
     Properties:
       ConfigRuleName: ec2-imdsv2-check
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::EC2::Instance
@@ -503,6 +534,7 @@ Resources:
   Ec2InstanceDetailedMonitoringEnabled:
     Properties:
       ConfigRuleName: ec2-instance-detailed-monitoring-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::EC2::Instance
@@ -513,6 +545,7 @@ Resources:
   Ec2InstanceManagedBySsm:
     Properties:
       ConfigRuleName: ec2-instance-managed-by-systems-manager
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::EC2::Instance
@@ -524,6 +557,7 @@ Resources:
   Ec2InstanceNoPublicIp:
     Properties:
       ConfigRuleName: ec2-instance-no-public-ip
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::EC2::Instance
@@ -534,6 +568,7 @@ Resources:
   Ec2ManagedinstanceAssociationComplianceStatusCheck:
     Properties:
       ConfigRuleName: ec2-managedinstance-association-compliance-status-check
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::SSM::AssociationCompliance
@@ -544,6 +579,7 @@ Resources:
   Ec2ManagedinstancePatchComplianceStatusCheck:
     Properties:
       ConfigRuleName: ec2-managedinstance-patch-compliance-status-check
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::SSM::PatchCompliance
@@ -554,6 +590,7 @@ Resources:
   Ec2StoppedInstance:
     Properties:
       ConfigRuleName: ec2-stopped-instance
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: EC2_STOPPED_INSTANCE
@@ -561,6 +598,7 @@ Resources:
   Ec2VolumeInuseCheck:
     Properties:
       ConfigRuleName: ec2-volume-inuse-check
+      Description: "NIST800-53R4 rule set"
       InputParameters:
         deleteOnTermination:
           Fn::If:
@@ -577,6 +615,7 @@ Resources:
   EfsEncryptedCheck:
     Properties:
       ConfigRuleName: efs-encrypted-check
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: EFS_ENCRYPTED_CHECK
@@ -586,6 +625,7 @@ Resources:
   # EfsInBackupPlan:
   #   Properties:
   #     ConfigRuleName: efs-in-backup-plan
+  #     Description: "NIST800-53R4 rule set"
   #     Source:
   #       Owner: AWS
   #       SourceIdentifier: EFS_IN_BACKUP_PLAN
@@ -594,6 +634,7 @@ Resources:
   ElasticacheRedisClusterAutomaticBackupCheck:
     Properties:
       ConfigRuleName: elasticache-redis-cluster-automatic-backup-check
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: ELASTICACHE_REDIS_CLUSTER_AUTOMATIC_BACKUP_CHECK
@@ -601,6 +642,7 @@ Resources:
   ElasticsearchEncryptedAtRest:
     Properties:
       ConfigRuleName: elasticsearch-encrypted-at-rest
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: ELASTICSEARCH_ENCRYPTED_AT_REST
@@ -608,6 +650,7 @@ Resources:
   ElasticsearchInVpcOnly:
     Properties:
       ConfigRuleName: elasticsearch-in-vpc-only
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: ELASTICSEARCH_IN_VPC_ONLY
@@ -615,6 +658,7 @@ Resources:
   ElasticsearchNodeToNodeEncryptionCheck:
     Properties:
       ConfigRuleName: elasticsearch-node-to-node-encryption-check
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::Elasticsearch::Domain
@@ -625,6 +669,7 @@ Resources:
   ElbAcmCertificateRequired:
     Properties:
       ConfigRuleName: elb-acm-certificate-required
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::ElasticLoadBalancing::LoadBalancer
@@ -635,6 +680,7 @@ Resources:
   ElbCrossZoneLoadBalancingEnabled:
     Properties:
       ConfigRuleName: elb-cross-zone-load-balancing-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::ElasticLoadBalancing::LoadBalancer
@@ -645,6 +691,7 @@ Resources:
   ElbDeletionProtectionEnabled:
     Properties:
       ConfigRuleName: elb-deletion-protection-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::ElasticLoadBalancingV2::LoadBalancer
@@ -655,6 +702,7 @@ Resources:
   ElbLoggingEnabled:
     Properties:
       ConfigRuleName: elb-logging-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::ElasticLoadBalancing::LoadBalancer
@@ -666,6 +714,7 @@ Resources:
   ElbTlsHttpsListenersOnly:
     Properties:
       ConfigRuleName: elb-tls-https-listeners-only
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::ElasticLoadBalancing::LoadBalancer
@@ -676,6 +725,7 @@ Resources:
   EmrKerberosEnabled:
     Properties:
       ConfigRuleName: emr-kerberos-enabled
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: EMR_KERBEROS_ENABLED
@@ -683,6 +733,7 @@ Resources:
   EmrMasterNoPublicIp:
     Properties:
       ConfigRuleName: emr-master-no-public-ip
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes: []
       Source:
@@ -692,6 +743,7 @@ Resources:
   EncryptedVolumes:
     Properties:
       ConfigRuleName: encrypted-volumes
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::EC2::Volume
@@ -702,6 +754,7 @@ Resources:
   GuarddutyEnabledCentralized:
     Properties:
       ConfigRuleName: guardduty-enabled-centralized
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: GUARDDUTY_ENABLED_CENTRALIZED
@@ -709,6 +762,7 @@ Resources:
   GuarddutyNonArchivedFindings:
     Properties:
       ConfigRuleName: guardduty-non-archived-findings
+      Description: "NIST800-53R4 rule set"
       InputParameters:
         daysHighSev:
           Fn::If:
@@ -732,6 +786,7 @@ Resources:
   IamGroupHasUsersCheck:
     Properties:
       ConfigRuleName: iam-group-has-users-check
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::IAM::Group
@@ -742,6 +797,7 @@ Resources:
   IamNoInlinePolicyCheck:
     Properties:
       ConfigRuleName: iam-no-inline-policy-check
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::IAM::User
@@ -754,6 +810,7 @@ Resources:
   IamPasswordPolicy:
     Properties:
       ConfigRuleName: iam-password-policy
+      Description: "NIST800-53R4 rule set"
       InputParameters:
         MaxPasswordAge:
           Fn::If:
@@ -797,6 +854,7 @@ Resources:
   IamPolicyNoStatementsWithAdminAccess:
     Properties:
       ConfigRuleName: iam-policy-no-statements-with-admin-access
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::IAM::Policy
@@ -807,6 +865,7 @@ Resources:
   IamRootAccessKeyCheck:
     Properties:
       ConfigRuleName: iam-root-access-key-check
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: IAM_ROOT_ACCESS_KEY_CHECK
@@ -814,6 +873,7 @@ Resources:
   IamUserGroupMembershipCheck:
     Properties:
       ConfigRuleName: iam-user-group-membership-check
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::IAM::User
@@ -824,6 +884,7 @@ Resources:
   IamUserMfaEnabled:
     Properties:
       ConfigRuleName: iam-user-mfa-enabled
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: IAM_USER_MFA_ENABLED
@@ -831,6 +892,7 @@ Resources:
   IamUserNoPoliciesCheck:
     Properties:
       ConfigRuleName: iam-user-no-policies-check
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::IAM::User
@@ -841,6 +903,7 @@ Resources:
   IamUserUnusedCredentialsCheck:
     Properties:
       ConfigRuleName: iam-user-unused-credentials-check
+      Description: "NIST800-53R4 rule set"
       InputParameters:
         maxCredentialUsageAge:
           Fn::If:
@@ -854,6 +917,7 @@ Resources:
   IncomingSshDisabled:
     Properties:
       ConfigRuleName: restricted-ssh
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::EC2::SecurityGroup
@@ -864,6 +928,7 @@ Resources:
   InstancesInVpc:
     Properties:
       ConfigRuleName: ec2-instances-in-vpc
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::EC2::Instance
@@ -874,6 +939,7 @@ Resources:
   InternetGatewayAuthorizedVpcOnly:
     Properties:
       ConfigRuleName: internet-gateway-authorized-vpc-only
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::EC2::InternetGateway
@@ -884,6 +950,7 @@ Resources:
   KmsCmkNotScheduledForDeletion:
     Properties:
       ConfigRuleName: kms-cmk-not-scheduled-for-deletion
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::KMS::Key
@@ -894,6 +961,7 @@ Resources:
   LambdaFunctionPublicAccessProhibited:
     Properties:
       ConfigRuleName: lambda-function-public-access-prohibited
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::Lambda::Function
@@ -904,6 +972,7 @@ Resources:
   LambdaInsideVpc:
     Properties:
       ConfigRuleName: lambda-inside-vpc
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::Lambda::Function
@@ -914,6 +983,7 @@ Resources:
   MfaEnabledForIamConsoleAccess:
     Properties:
       ConfigRuleName: mfa-enabled-for-iam-console-access
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: MFA_ENABLED_FOR_IAM_CONSOLE_ACCESS
@@ -921,6 +991,7 @@ Resources:
   MultiRegionCloudTrailEnabled:
     Properties:
       ConfigRuleName: multi-region-cloudtrail-enabled
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: MULTI_REGION_CLOUD_TRAIL_ENABLED
@@ -928,6 +999,7 @@ Resources:
   RdsEnhancedMonitoringEnabled:
     Properties:
       ConfigRuleName: rds-enhanced-monitoring-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::RDS::DBInstance
@@ -940,6 +1012,7 @@ Resources:
   # RdsInBackupPlan:
   #   Properties:
   #     ConfigRuleName: rds-in-backup-plan
+  #     Description: "NIST800-53R4 rule set"
   #     Source:
   #       Owner: AWS
   #       SourceIdentifier: RDS_IN_BACKUP_PLAN
@@ -948,6 +1021,7 @@ Resources:
   RdsInstanceDeletionProtectionEnabled:
     Properties:
       ConfigRuleName: rds-instance-deletion-protection-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::RDS::DBInstance
@@ -958,6 +1032,7 @@ Resources:
   RdsInstancePublicAccessCheck:
     Properties:
       ConfigRuleName: rds-instance-public-access-check
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::RDS::DBInstance
@@ -968,6 +1043,7 @@ Resources:
   RdsLoggingEnabled:
     Properties:
       ConfigRuleName: rds-logging-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::RDS::DBInstance
@@ -978,6 +1054,7 @@ Resources:
   RdsMultiAzSupport:
     Properties:
       ConfigRuleName: rds-multi-az-support
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::RDS::DBInstance
@@ -988,6 +1065,7 @@ Resources:
   RdsSnapshotEncrypted:
     Properties:
       ConfigRuleName: rds-snapshot-encrypted
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::RDS::DBSnapshot
@@ -999,6 +1077,7 @@ Resources:
   RdsSnapshotsPublicProhibited:
     Properties:
       ConfigRuleName: rds-snapshots-public-prohibited
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::RDS::DBSnapshot
@@ -1010,6 +1089,7 @@ Resources:
   RdsStorageEncrypted:
     Properties:
       ConfigRuleName: rds-storage-encrypted
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::RDS::DBInstance
@@ -1020,6 +1100,7 @@ Resources:
   RedshiftClusterConfigurationCheck:
     Properties:
       ConfigRuleName: redshift-cluster-configuration-check
+      Description: "NIST800-53R4 rule set"
       InputParameters:
         clusterDbEncrypted: 'TRUE'
         loggingEnabled: 'TRUE'
@@ -1033,6 +1114,7 @@ Resources:
   RedshiftClusterPublicAccessCheck:
     Properties:
       ConfigRuleName: redshift-cluster-public-access-check
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::Redshift::Cluster
@@ -1043,6 +1125,7 @@ Resources:
   RedshiftRequireTlsSsl:
     Properties:
       ConfigRuleName: redshift-require-tls-ssl
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::Redshift::Cluster
@@ -1053,6 +1136,7 @@ Resources:
   RestrictedIncomingTraffic:
     Properties:
       ConfigRuleName: restricted-common-ports
+      Description: "NIST800-53R4 rule set"
       InputParameters:
         blockedPort1:
           Fn::If:
@@ -1091,6 +1175,7 @@ Resources:
   # RootAccountHardwareMfaEnabled:
   #   Properties:
   #     ConfigRuleName: root-account-hardware-mfa-enabled
+  #     Description: "NIST800-53R4 rule set"
   #     Source:
   #       Owner: AWS
   #       SourceIdentifier: ROOT_ACCOUNT_HARDWARE_MFA_ENABLED
@@ -1100,6 +1185,7 @@ Resources:
   # RootAccountMfaEnabled:
   #   Properties:
   #     ConfigRuleName: root-account-mfa-enabled
+  #     Description: "NIST800-53R4 rule set"
   #     Source:
   #       Owner: AWS
   #       SourceIdentifier: ROOT_ACCOUNT_MFA_ENABLED
@@ -1109,6 +1195,7 @@ Resources:
   # S3AccountLevelPublicAccessBlocks:
   #   Properties:
   #     ConfigRuleName: s3-account-level-public-access-blocks
+  #     Description: "NIST800-53R4 rule set"
   #     InputParameters:
   #       BlockPublicAcls:
   #         Fn::If:
@@ -1141,6 +1228,7 @@ Resources:
   S3BucketDefaultLockEnabled:
     Properties:
       ConfigRuleName: s3-bucket-default-lock-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::S3::Bucket
@@ -1151,6 +1239,7 @@ Resources:
   S3BucketLoggingEnabled:
     Properties:
       ConfigRuleName: s3-bucket-logging-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::S3::Bucket
@@ -1161,6 +1250,7 @@ Resources:
   S3BucketPolicyGranteeCheck:
     Properties:
       ConfigRuleName: s3-bucket-policy-grantee-check
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::S3::Bucket
@@ -1171,6 +1261,7 @@ Resources:
   S3BucketPublicReadProhibited:
     Properties:
       ConfigRuleName: s3-bucket-public-read-prohibited
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::S3::Bucket
@@ -1181,6 +1272,7 @@ Resources:
   S3BucketPublicWriteProhibited:
     Properties:
       ConfigRuleName: s3-bucket-public-write-prohibited
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::S3::Bucket
@@ -1191,6 +1283,7 @@ Resources:
   S3BucketReplicationEnabled:
     Properties:
       ConfigRuleName: s3-bucket-replication-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::S3::Bucket
@@ -1201,6 +1294,7 @@ Resources:
   S3BucketServerSideEncryptionEnabled:
     Properties:
       ConfigRuleName: s3-bucket-server-side-encryption-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::S3::Bucket
@@ -1211,6 +1305,7 @@ Resources:
   S3BucketSslRequestsOnly:
     Properties:
       ConfigRuleName: s3-bucket-ssl-requests-only
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::S3::Bucket
@@ -1221,6 +1316,7 @@ Resources:
   S3BucketVersioningEnabled:
     Properties:
       ConfigRuleName: s3-bucket-versioning-enabled
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::S3::Bucket
@@ -1231,6 +1327,7 @@ Resources:
   SagemakerEndpointConfigurationKmsKeyConfigured:
     Properties:
       ConfigRuleName: sagemaker-endpoint-configuration-kms-key-configured
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: SAGEMAKER_ENDPOINT_CONFIGURATION_KMS_KEY_CONFIGURED
@@ -1238,6 +1335,7 @@ Resources:
   SagemakerNotebookInstanceKmsKeyConfigured:
     Properties:
       ConfigRuleName: sagemaker-notebook-instance-kms-key-configured
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: SAGEMAKER_NOTEBOOK_INSTANCE_KMS_KEY_CONFIGURED
@@ -1245,6 +1343,7 @@ Resources:
   SagemakerNotebookNoDirectInternetAccess:
     Properties:
       ConfigRuleName: sagemaker-notebook-no-direct-internet-access
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: SAGEMAKER_NOTEBOOK_NO_DIRECT_INTERNET_ACCESS
@@ -1252,6 +1351,7 @@ Resources:
   SecretsmanagerScheduledRotationSuccessCheck:
     Properties:
       ConfigRuleName: secretsmanager-scheduled-rotation-success-check
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::SecretsManager::Secret
@@ -1262,6 +1362,7 @@ Resources:
   SecurityhubEnabled:
     Properties:
       ConfigRuleName: securityhub-enabled
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: SECURITYHUB_ENABLED
@@ -1269,6 +1370,7 @@ Resources:
   SnsEncryptedKms:
     Properties:
       ConfigRuleName: sns-encrypted-kms
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::SNS::Topic
@@ -1279,6 +1381,7 @@ Resources:
   VpcDefaultSecurityGroupClosed:
     Properties:
       ConfigRuleName: vpc-default-security-group-closed
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::EC2::SecurityGroup
@@ -1289,6 +1392,7 @@ Resources:
   VpcFlowLogsEnabled:
     Properties:
       ConfigRuleName: vpc-flow-logs-enabled
+      Description: "NIST800-53R4 rule set"
       Source:
         Owner: AWS
         SourceIdentifier: VPC_FLOW_LOGS_ENABLED
@@ -1296,6 +1400,7 @@ Resources:
   VpcSgOpenOnlyToAuthorizedPorts:
     Properties:
       ConfigRuleName: vpc-sg-open-only-to-authorized-ports
+      Description: "NIST800-53R4 rule set"
       InputParameters:
         authorizedTcpPorts:
           Fn::If:
@@ -1317,6 +1422,7 @@ Resources:
   VpcVpn2TunnelsUp:
     Properties:
       ConfigRuleName: vpc-vpn-2-tunnels-up
+      Description: "NIST800-53R4 rule set"
       Scope:
         ComplianceResourceTypes:
         - AWS::EC2::VPNConnection
@@ -1329,6 +1435,7 @@ Resources:
   # Wafv2LoggingEnabled:
   #   Properties:
   #     ConfigRuleName: wafv2-logging-enabled
+  #     Description: "NIST800-53R4 rule set"
   #     Source:
   #       Owner: AWS
   #       SourceIdentifier: WAFV2_LOGGING_ENABLED
